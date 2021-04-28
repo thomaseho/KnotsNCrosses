@@ -1,5 +1,6 @@
 package com.example.knotsncrosses
 
+import com.example.knotsncrosses.api.data.GameState
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +14,13 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+}
+
+class CreateGameUnitTest {
+
+    @Test
+    fun can_create_game(){
+        //com.example.knotsncrosses.api.GameService.createGame()
     }
 }
