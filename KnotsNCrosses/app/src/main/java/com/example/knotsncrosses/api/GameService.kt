@@ -39,7 +39,7 @@ object GameService {
     }
 
 
-    fun createGame(playerId:String, state:GameState, callback:GameServiceCallback){
+    fun createGame(playerId:String, state:GameState, callback: GameServiceCallback){
 
         val url = APIEndpoints.CREATE_GAME.url
 

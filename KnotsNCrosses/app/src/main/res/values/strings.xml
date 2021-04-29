@@ -7,4 +7,5 @@
     <string name="join_game_path">/%1s/join</string>
     <string name="poll_game_path">/%1s/poll</string>
     <string name="update_game_path">/%1s/update</string>
+    <string name="player_name">Player name</string>
 </resources>
