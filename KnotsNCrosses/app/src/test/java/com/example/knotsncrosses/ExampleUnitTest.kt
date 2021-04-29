@@ -14,7 +14,7 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
 
-    var gameState:Game? = null
+   /* var gameState:Game? = null
     val firstPlayer:String = "Thomas"
     val secondPlayer:String = "Thomas"
     val initState = listOf(listOf(0,0,0), listOf(0,0,0), listOf(0,0,0))
@@ -30,7 +30,7 @@ class ExampleUnitTest {
             assertEquals(firstPlayer, state?.players?.get(0))
         }
 
-    }
+    } */
 
 
     @Test
