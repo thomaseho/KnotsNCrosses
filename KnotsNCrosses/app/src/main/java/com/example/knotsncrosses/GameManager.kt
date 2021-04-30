@@ -6,6 +6,8 @@ import com.example.knotsncrosses.api.data.GameState
 
 object GameManager {
 
+    lateinit var currentGames: MutableList<Game>
+
     var player:String? = null
     var state:GameState? = null
 
