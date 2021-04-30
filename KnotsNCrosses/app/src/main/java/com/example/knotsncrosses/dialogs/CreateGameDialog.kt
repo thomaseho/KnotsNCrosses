@@ -5,6 +5,8 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.example.knotsncrosses.GameManager
+import com.example.knotsncrosses.MainActivity
 import com.example.knotsncrosses.databinding.DialogCreateGameBinding
 import java.lang.ClassCastException
 import java.lang.IllegalStateException
@@ -21,10 +23,10 @@ class CreateGameDialog(): DialogFragment() {
             val binding = DialogCreateGameBinding.inflate(inflater)
 
             builder.apply {
-                setTitle("Create game")
+                setTitle("What is your name gamer?")
                 setPositiveButton("Create") { dialog, which ->
                     if (binding.username.text.toString() != ""){
-                        listener.onDialogCreateGame(binding.username.text.toString())
+                        GameManager.player = binding.username.text.toString()
                     }
                 }
 
