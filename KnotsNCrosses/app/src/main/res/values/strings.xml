@@ -16,4 +16,5 @@
     <string name="save">Save</string>
     <string name="recent_game_id">Recent game id:</string>
     <string name="enterGameId">Enter a game ID to join</string>
+    <string name="save_game">Save Games</string>
 </resources>

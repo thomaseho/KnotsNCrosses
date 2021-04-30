@@ -29,11 +29,10 @@ class GameHolder {
 class MenuScreen: AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuScreenBinding
-    private lateinit var auth: FirebaseAuth
+
 
     val TAG:String = "MenuScreen"
 
-    @SuppressLint("HardwareIds")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,14 +40,7 @@ class MenuScreen: AppCompatActivity() {
 
         binding.menuUserName.text = GameManager.player
 
-        auth = Firebase.auth
-        signInAnonymously()
-
         setContentView(binding.root)
-
-
-        val secureID = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
-        FirebaseManager.instance.setUniqueId(secureID)
 
         binding.currentGamesListing.layoutManager = LinearLayoutManager(this)
         binding.currentGamesListing.adapter = GameRecyclerAdapter(emptyList<Game>(), this::onGameClicked)
@@ -64,6 +56,10 @@ class MenuScreen: AppCompatActivity() {
 
             joinGameScreen()
 
+        }
+
+        saveGameButton.setOnClickListener {
+            saveGames()
         }
 
         GameManager.onCurrentGames = {
@@ -84,8 +80,6 @@ class MenuScreen: AppCompatActivity() {
 
         }
 
-        GameManager.loadGames()
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -102,15 +96,7 @@ class MenuScreen: AppCompatActivity() {
 
     }
 
-    private fun signInAnonymously(){
 
-        auth.signInAnonymously().addOnSuccessListener {
-            Log.d(TAG, "Login success ${it.user}")
-        }.addOnFailureListener{
-            Log.e(TAG, "Login failed", it)
-        }
-
-    }
 
     private fun onGameClicked(game: Game): Unit {
 

@@ -2,6 +2,8 @@ package com.example.knotsncrosses.Firebase
 
 import android.net.Uri
 import android.util.Log
+import androidx.core.net.toUri
+import com.beust.klaxon.Klaxon
 import com.example.knotsncrosses.GameManager
 import com.example.knotsncrosses.api.data.Game
 import com.google.firebase.ktx.Firebase
@@ -9,6 +11,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.google.gson.Gson
 import java.io.File
+import java.io.FileOutputStream
 
 class FirebaseManager {
 
@@ -24,15 +27,15 @@ class FirebaseManager {
         userGamesRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
 
             val userGames = String(it)
-            val result = Gson().fromJson(it.toString(), KNCUser::class.java)
+            val result = Klaxon().parseArray<Game>(userGames)
 
             GameManager.currentGames = mutableListOf()
 
             if (result != null){
 
-                GameManager.player = result.userName
 
-                result.currentGames.forEach{
+
+                result.forEach{
 
                     GameManager.currentGames.add(it)
                     GameManager.updateCurrentGames()
@@ -55,7 +58,6 @@ class FirebaseManager {
 
     fun saveUserData(filePath: File?) {
 
-        GameManager.updateCurrentGames()
         val path  = filePath
         val fileName = "${uniqueId}-Games.json"
         val file = File(path, fileName)
@@ -70,11 +72,12 @@ class FirebaseManager {
 
         if (path != null){
 
-            var content: String = "{" +
-                    "\"userName\": \"${GameManager.player}\", \n"
+            GameManager.player = GameManager.currentGames[0].players[0]
+
+            var content: String = "[\n"
 
             GameManager.currentGames.forEach { Game ->
-
+                content += "{"
                 content += "\"players\": [ \n"
 
                 Game.players.forEach {
@@ -83,7 +86,7 @@ class FirebaseManager {
 
                 }
 
-                content += "\"gameId\": \"${Game.gameId}\", \n" +
+                content += "], \n\"gameId\": \"${Game.gameId}\", \n" +
                         "\"state\": [\n"
 
                 Game.state.forEach{
@@ -96,9 +99,20 @@ class FirebaseManager {
 
                     content += "], \n"
 
-                }
+                    }
+                content +=  " ], \n }, \n"
+
 
             }
+            content += "]\n"
+
+            FileOutputStream(file, true).bufferedWriter().use { writer ->
+
+                writer.write(content)
+
+            }
+
+            upload(file.toUri())
 
         }
 

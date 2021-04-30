@@ -103,6 +103,7 @@ object GameManager {
     fun updateCurrentGames(){
 
         onCurrentGames?.invoke(currentGames)
+        updateChanges()
 
     }
 
