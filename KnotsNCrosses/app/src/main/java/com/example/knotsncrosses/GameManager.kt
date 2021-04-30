@@ -7,12 +7,15 @@ import com.example.knotsncrosses.api.data.GameState
 object GameManager {
 
     lateinit var currentGames: MutableList<Game>
+    lateinit var recentGame: Game
 
     var player:String? = null
     var state:GameState? = null
     val StartingGameState = listOf(listOf(0,0,0), listOf(0,0,0), listOf(0,0,0))
 
-    var onPlayer:((String) -> Unit)? = null
+    var onRecentGame:((Game) -> Unit)? = null
+    var onCurrentGames:((List<Game>) -> Unit)? = null
+    var onChanges:((List<Game>) -> Unit)? = null
 
     fun createGame(player:String){
 
@@ -28,6 +31,10 @@ object GameManager {
             else {
                 if (game != null) {
                     println("You created a game with id ${game.gameId}")
+                    currentGames.add(game)
+                    recentGame = game
+                    onCurrentGames?.invoke(currentGames)
+                    updateRecentGame()
                 }
             }
         }
@@ -90,6 +97,30 @@ object GameManager {
                 }
             }
         }
+
+    }
+
+    fun updateCurrentGames(){
+
+        onCurrentGames?.invoke(currentGames)
+
+    }
+
+    fun updateRecentGame(){
+
+        onRecentGame?.invoke(recentGame)
+
+    }
+
+    fun updateChanges(){
+
+        onChanges?.invoke(currentGames)
+
+    }
+
+    fun loadGames(){
+
+        currentGames = mutableListOf()
 
     }
 

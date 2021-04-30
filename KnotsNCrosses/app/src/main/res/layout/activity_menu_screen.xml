@@ -29,6 +29,15 @@
                 android:textColor="@color/userNameColor"
                 android:textSize="20sp"
                 android:typeface="serif" />
+
+            <TextView
+                android:id="@+id/recentId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="230dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/teal_200"
+                android:text="@string/recent_game_id" />
         </FrameLayout>
 
         <ScrollView
@@ -55,13 +64,13 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/newGameButton"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/new_game" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/joinGameButton"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/join_game" />

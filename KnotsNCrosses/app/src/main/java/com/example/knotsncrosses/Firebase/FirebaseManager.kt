@@ -35,7 +35,7 @@ class FirebaseManager {
                 result.currentGames.forEach{
 
                     GameManager.currentGames.add(it)
-                    // add update games function
+                    GameManager.updateCurrentGames()
 
                 }
 
@@ -55,7 +55,7 @@ class FirebaseManager {
 
     fun saveUserData(filePath: File?) {
 
-        // add update games function
+        GameManager.updateCurrentGames()
         val path  = filePath
         val fileName = "${uniqueId}-Games.json"
         val file = File(path, fileName)
