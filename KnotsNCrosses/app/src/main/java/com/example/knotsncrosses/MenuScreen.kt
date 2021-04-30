@@ -110,8 +110,7 @@ class MenuScreen: AppCompatActivity() {
 
     private fun saveGames(){
 
-        val path = this.getExternalFilesDir(null)
-        FirebaseManager.instance.saveUserData(path)
+        FirebaseManager.instance.saveUserData()
 
     }
 

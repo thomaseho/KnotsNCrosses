@@ -29,11 +29,15 @@ class MainActivity : AppCompatActivity(){
         setContentView(binding.root)
 
         val secureID = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
-        FirebaseManager.instance.setUniqueId(secureID)
+        val path = this.getExternalFilesDir(null)
+
+        FirebaseManager.instance.setUniqueId(secureID, path)
 
         auth = Firebase.auth
         signInAnonymously()
-        FirebaseManager.instance.loadFirebase()
+        //FirebaseManager.instance.loadFirebase()
+        GameManager.loadGames()
+
 
         binding.startButton.setOnClickListener {
 
