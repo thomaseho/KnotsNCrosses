@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "523876767419",
+    "project_id": "knotsncrosses-6c1d6",
+    "storage_bucket": "knotsncrosses-6c1d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523876767419:android:be628e84f853e54cdcbb9e",
+        "android_client_info": {
+          "package_name": "com.example.KnotsNCrosses"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523876767419-hjcj00cvmmmq5eb9rtmji6d6ltnm98a9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrpBQCFalbrXHYj4Nj2J99UcKpa2w6HGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523876767419-hjcj00cvmmmq5eb9rtmji6d6ltnm98a9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

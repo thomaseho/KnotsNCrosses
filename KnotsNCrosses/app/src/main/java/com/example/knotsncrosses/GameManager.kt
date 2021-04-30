@@ -6,10 +6,13 @@ import com.example.knotsncrosses.api.data.GameState
 
 object GameManager {
 
+    lateinit var currentGames: MutableList<Game>
+
     var player:String? = null
     var state:GameState? = null
-
     val StartingGameState = listOf(listOf(0,0,0), listOf(0,0,0), listOf(0,0,0))
+
+    var onPlayer:((String) -> Unit)? = null
 
     fun createGame(player:String){
 
