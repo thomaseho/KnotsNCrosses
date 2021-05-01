@@ -74,7 +74,7 @@ class MenuScreen: AppCompatActivity() {
 
         GameManager.onChanges = {
 
-            //saveGames()
+            // Future savepoint for Firebase
 
         }
 
