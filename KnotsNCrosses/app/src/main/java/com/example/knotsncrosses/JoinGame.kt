@@ -18,8 +18,6 @@ class JoinGame : AppCompatActivity() {
         binding = ActivityJoinGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recentId.text = binding.recentId.text.toString() + GameManager.recentGame.gameId
-
         joinGameButton.setOnClickListener {
 
             joinGame()

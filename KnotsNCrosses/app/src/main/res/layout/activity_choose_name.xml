@@ -4,8 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChooseName">
+    tools:context=".ChooseName"
+    android:background="@color/cardview_dark_background">
 
+
+    <TextView
+        android:id="@+id/CreateNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="119dp"
+        android:text="@string/CreateUserName"
+        android:textColor="@color/userNameColor"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/username"
@@ -20,7 +37,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:textColor="@color/userNameColor"/>
 
     <Button
         android:id="@+id/saveNameButton"

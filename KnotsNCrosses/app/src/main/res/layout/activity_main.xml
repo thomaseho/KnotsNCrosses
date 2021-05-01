@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/cardview_dark_background">
 
         <TextView
             android:id="@+id/welcomeText"
@@ -20,7 +21,8 @@
             android:text="@string/welcome_text"
             android:textSize="50sp"
             android:layout_marginTop="100dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="@color/userNameColor"/>
 
         <Button
             android:id="@+id/startButton"
