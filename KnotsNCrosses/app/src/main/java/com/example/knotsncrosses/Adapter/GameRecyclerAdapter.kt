@@ -1,8 +1,10 @@
 package com.example.knotsncrosses.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.knotsncrosses.GameManager
 import com.example.knotsncrosses.api.data.Game
 import com.example.knotsncrosses.databinding.MenuGameLayoutBinding
 
@@ -10,6 +12,7 @@ class GameRecyclerAdapter(private var games:List<Game>, private val onGameClicke
 
     class ViewHolder(val binding: MenuGameLayoutBinding): RecyclerView.ViewHolder(binding.root){
 
+        @SuppressLint("SetTextI18n")
         fun bind(Game: Game, onGameClicked: (Game) -> Unit) {
 
             binding.playerOneName.text = Game.players[0]
@@ -19,6 +22,8 @@ class GameRecyclerAdapter(private var games:List<Game>, private val onGameClicke
                 binding.playerTwoName.text = Game.players[1]
 
             }
+
+            binding.gameIdtext.text = "Game ID: " + Game.gameId
 
             binding.card.setOnClickListener {
 

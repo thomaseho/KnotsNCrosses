@@ -7,7 +7,8 @@ import com.example.knotsncrosses.api.data.GameState
 object GameManager {
 
     lateinit var currentGames: MutableList<Game>
-    lateinit var recentGame: Game
+
+    var recentGame: Game = Game(mutableListOf(), "", listOf())
 
     var player:String? = null
     var state:GameState? = null
@@ -38,7 +39,6 @@ object GameManager {
                 }
             }
         }
-
     }
 
     fun joinGame(player: String, gameId: String) {
@@ -58,9 +58,7 @@ object GameManager {
                     println("You joined a game with id ${game.gameId}")
                 }
             }
-
         }
-
     }
 
     fun updateGame(gameId: String, gameState: GameState) {
@@ -94,6 +92,22 @@ object GameManager {
             } else {
                 if (game != null) {
                     println("You polled a game with id ${game.gameId}")
+                    currentGames.forEach{
+
+                        if (it.gameId == game.gameId){
+                            if (it.state != game.state){
+
+                                it.state = game.state
+
+                            }
+                            if (it.players != game.players){
+
+                                it.players = game.players
+
+                            }
+
+                        }
+                    }
                 }
             }
         }

@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:textColor="@color/userNameColor"
             android:typeface="serif"
             android:textSize="20sp"
@@ -33,11 +33,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:textColor="@color/userNameColor"
             android:typeface="serif"
             android:textSize="20sp"
             tools:text="Player 2 Name" />
+
+        <TextView
+            android:id="@+id/gameIdtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="180dp"
+            android:textColor="@color/teal_200"
+            android:typeface="serif"
+            android:textSize="20sp"
+            tools:text="Game id: " />
 
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

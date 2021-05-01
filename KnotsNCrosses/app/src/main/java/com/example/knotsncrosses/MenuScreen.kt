@@ -3,17 +3,14 @@ package com.example.knotsncrosses
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.CountDownTimer
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.knotsncrosses.Firebase.FirebaseManager
 import com.example.knotsncrosses.api.data.Game
 import com.example.knotsncrosses.databinding.ActivityMenuScreenBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import android.provider.Settings
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knotsncrosses.Adapter.GameRecyclerAdapter
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_menu_screen.*
 
 class GameHolder {
@@ -29,6 +26,11 @@ class GameHolder {
 class MenuScreen: AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuScreenBinding
+    lateinit var timer: CountDownTimer
+
+    var pollTimeInMs = 5000L
+    val timeTicks = 1000L
+    var repetitions: Int = 0
 
 
     val TAG:String = "MenuScreen"
@@ -76,9 +78,11 @@ class MenuScreen: AppCompatActivity() {
 
         GameManager.onChanges = {
 
-            saveGames()
+            //saveGames()
 
         }
+
+        pollTimer()
 
     }
 
@@ -111,6 +115,33 @@ class MenuScreen: AppCompatActivity() {
     private fun saveGames(){
 
         FirebaseManager.instance.saveUserData()
+
+    }
+
+    fun pollTimer(){
+
+        timer = object : CountDownTimer(pollTimeInMs, timeTicks){
+            override fun onTick(millisUntilFinished: Long) {
+
+            }
+
+            override fun onFinish() {
+
+                println("Det pollineres :)")
+                GameManager.currentGames.forEach {
+
+                    GameManager.pollGame(it.gameId)
+                    GameManager.updateCurrentGames()
+
+                }
+
+                pollTimer()
+
+            }
+
+        }
+
+        timer.start()
 
     }
 
