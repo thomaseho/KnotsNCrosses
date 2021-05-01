@@ -35,35 +35,12 @@ class KNCGameActivity : AppCompatActivity() {
 
             }
 
-            val grid: MutableList<Button> = mutableListOf(
-                    r0b0, r0b1, r0b2,
-                    r1b0, r1b1, r1b2,
-                    r2b0, r2b1, r2b2
-            )
+            setupGrid()
 
-            val ints = listOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
-
-            val states: List<Int> = listOf(
-                    GameHolder.PickedGame!!.state[0][0],
-                    GameHolder.PickedGame!!.state[0][1],
-                    GameHolder.PickedGame!!.state[0][2],
-                    GameHolder.PickedGame!!.state[1][0],
-                    GameHolder.PickedGame!!.state[1][1],
-                    GameHolder.PickedGame!!.state[1][2],
-                    GameHolder.PickedGame!!.state[2][0],
-                    GameHolder.PickedGame!!.state[2][1],
-                    GameHolder.PickedGame!!.state[2][2]
-            )
-
-            for (i in ints){
-
-                updateGrid(states[i], grid[i])
-
-            }
         }
     }
 
-    private fun updateGrid(state: Int, gridbutton: Button){
+    private fun updateGridButton(state: Int, gridbutton: Button){
 
         when (state) {
 
@@ -74,6 +51,36 @@ class KNCGameActivity : AppCompatActivity() {
             else -> {
                 println("SOMETHING IS NOT QUITE RIGHT FAM")
             }
+        }
+    }
+
+    private fun setupGrid(){
+
+        val grid: MutableList<Button> = mutableListOf(
+                r0b0, r0b1, r0b2,
+                r1b0, r1b1, r1b2,
+                r2b0, r2b1, r2b2
+        )
+
+        val ints = listOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
+
+
+        val states: List<Int> = listOf(
+                GameHolder.PickedGame!!.state[0][0],
+                GameHolder.PickedGame!!.state[0][1],
+                GameHolder.PickedGame!!.state[0][2],
+                GameHolder.PickedGame!!.state[1][0],
+                GameHolder.PickedGame!!.state[1][1],
+                GameHolder.PickedGame!!.state[1][2],
+                GameHolder.PickedGame!!.state[2][0],
+                GameHolder.PickedGame!!.state[2][1],
+                GameHolder.PickedGame!!.state[2][2]
+        )
+
+        for (i in ints){
+
+            updateGridButton(states[i], grid[i])
+
         }
     }
 }
