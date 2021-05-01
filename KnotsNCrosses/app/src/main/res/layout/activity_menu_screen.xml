@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/cardview_dark_background">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -65,21 +66,18 @@
 
             <Button
                 android:id="@+id/newGameButton"
-                android:layout_width="100dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:text="@string/new_game" />
 
             <Button
                 android:id="@+id/joinGameButton"
-                android:layout_width="100dp"
+                android:layout_width="140dp"
+                android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
                 android:text="@string/join_game" />
 
-            <Button
-                android:id="@+id/saveGameButton"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/save_game" />
         </LinearLayout>
 
     </LinearLayout>

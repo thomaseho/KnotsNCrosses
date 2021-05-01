@@ -18,8 +18,6 @@ class JoinGame : AppCompatActivity() {
         binding = ActivityJoinGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recentId.text = binding.recentId.text.toString() + GameManager.recentGame.gameId
-
         joinGameButton.setOnClickListener {
 
             joinGame()
@@ -41,6 +39,8 @@ class JoinGame : AppCompatActivity() {
             Toast.makeText(this, "Real gamers join games with an ID, get one and come back", Toast.LENGTH_SHORT).show()
 
         }
+
+        finish()
 
     }
 

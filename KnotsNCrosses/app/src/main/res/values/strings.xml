@@ -11,7 +11,7 @@
     <string name="startButton">Start</string>
     <string name="welcome_text">Welcome gamer!</string>
     <string name="userName">Gamer name</string>
-    <string name="new_game">newGame</string>
+    <string name="new_game">New Game</string>
     <string name="join_game">Join Game</string>
     <string name="save">Save</string>
     <string name="recent_game_id">Recent game id:</string>
@@ -19,4 +19,8 @@
     <string name="save_game">Save Games</string>
     <string name="playertwo">PlayerTwo</string>
     <string name="playerone">PlayerOne</string>
+    <string name="winner">Winner</string>
+    <string name="player_1">Player 1</string>
+    <string name="JoinOtherPeoplesGames">Join another players game</string>
+    <string name="CreateUserName">Create a username</string>
 </resources>

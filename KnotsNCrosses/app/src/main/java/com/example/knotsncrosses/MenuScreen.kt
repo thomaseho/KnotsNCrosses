@@ -60,10 +60,6 @@ class MenuScreen: AppCompatActivity() {
 
         }
 
-        saveGameButton.setOnClickListener {
-            saveGames()
-        }
-
         GameManager.onCurrentGames = {
 
             (binding.currentGamesListing.adapter as GameRecyclerAdapter).updateGameCollection(it)
