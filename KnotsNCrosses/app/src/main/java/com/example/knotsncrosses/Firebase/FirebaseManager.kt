@@ -1,61 +1,62 @@
 package com.example.knotsncrosses.Firebase
 
 import android.net.Uri
+import android.util.JsonReader
 import android.util.Log
+import androidx.core.net.toUri
+import com.beust.klaxon.Klaxon
 import com.example.knotsncrosses.GameManager
 import com.example.knotsncrosses.api.data.Game
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.io.File
+import java.io.FileOutputStream
+import java.io.FileReader
 
 class FirebaseManager {
 
     private lateinit var uniqueId: String
+    private lateinit var filePath: File
 
     val TAG: String = "KnotsNCrosses: FirebaseManager"
 
     fun loadFirebase() {
 
-        val userGamesRef = Firebase.storage.reference.child("users/${uniqueId}-Games.json")
-        val ONE_MEGABYTE: Long = 1024 * 1024
+        val file = File(filePath, uniqueId.plus("-Games.json")).toUri()
 
-        userGamesRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+        val ref = FirebaseStorage.getInstance().reference.child("users/${file.lastPathSegment}")
+        val downloadUserGames = ref.getFile(file)
 
-            val userGames = String(it)
-            val result = Gson().fromJson(it.toString(), KNCUser::class.java)
+        downloadUserGames.addOnSuccessListener {
 
-            GameManager.currentGames = mutableListOf()
+            if(it != null){
 
-            if (result != null){
+                val jsonData = Gson().fromJson(it.toString(), KNCUser::class.java)
 
-                GameManager.player = result.userName
+                if (jsonData != null){
 
-                result.currentGames.forEach{
+                    GameManager.currentGames = jsonData.currentGames
+                    GameManager.player = jsonData.userName
 
-                    GameManager.currentGames.add(it)
-                    // add update games function
+                } else {
+
+                    GameManager.loadGames()
 
                 }
 
-            } else {
-
-                GameManager.currentGames = mutableListOf()
+                GameManager.updateCurrentGames()
 
             }
-
-        }.addOnFailureListener {
-
-            GameManager.currentGames = mutableListOf()
 
         }
 
     }
 
-    fun saveUserData(filePath: File?) {
+    fun saveUserData() {
 
-        // add update games function
         val path  = filePath
         val fileName = "${uniqueId}-Games.json"
         val file = File(path, fileName)
@@ -68,13 +69,13 @@ class FirebaseManager {
 
         file.createNewFile()
 
-        if (path != null){
 
-            var content: String = "{" +
-                    "\"userName\": \"${GameManager.player}\", \n"
+            GameManager.player = GameManager.currentGames[0].players[0]
+
+            var content: String = "{\n"
 
             GameManager.currentGames.forEach { Game ->
-
+                content += "{"
                 content += "\"players\": [ \n"
 
                 Game.players.forEach {
@@ -83,7 +84,7 @@ class FirebaseManager {
 
                 }
 
-                content += "\"gameId\": \"${Game.gameId}\", \n" +
+                content += "], \n\"gameId\": \"${Game.gameId}\", \n" +
                         "\"state\": [\n"
 
                 Game.state.forEach{
@@ -96,11 +97,22 @@ class FirebaseManager {
 
                     content += "], \n"
 
-                }
+                    }
+                content +=  " ], \n }, \n"
+
+
+            }
+            content += "}\n"
+
+            val jsonContent = Gson().toJson(content)
+
+            FileOutputStream(file, true).bufferedWriter().use { writer ->
+
+                writer.write(jsonContent)
 
             }
 
-        }
+            upload(file.toUri())
 
 
     }
@@ -125,9 +137,13 @@ class FirebaseManager {
     }
 
 
-    fun setUniqueId(deviceID: String){
+    fun setUniqueId(deviceID: String, path: File?){
 
         uniqueId = deviceID
+
+        if (path != null) {
+            filePath = path
+        }
 
     }
 
