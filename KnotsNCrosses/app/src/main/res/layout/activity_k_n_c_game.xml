@@ -12,7 +12,7 @@
         android:layout_height="150dp"
         android:layout_marginEnd="261dp"
         android:layout_marginBottom="53dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/gameGrid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +31,7 @@
         android:layout_height="150dp"
         android:layout_marginStart="255dp"
         android:layout_marginBottom="53dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/gameGrid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,19 +45,72 @@
     </FrameLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/gameGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/row0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/r0b0"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/r0b1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/r0b2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/r1b0"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
+                android:text="" />
 
             <Button
                 android:id="@+id/r1b1"
@@ -65,6 +118,9 @@
                 android:layout_height="100dp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
                 android:text="" />
 
             <Button
@@ -73,21 +129,28 @@
                 android:layout_height="100dp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:text="" />
-
-            <Button
-                android:id="@+id/r1b3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
                 android:text="" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/row2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/r2b0"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
+                android:text="" />
 
             <Button
                 android:id="@+id/r2b1"
@@ -95,6 +158,9 @@
                 android:layout_height="100dp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
                 android:text="" />
 
             <Button
@@ -103,44 +169,9 @@
                 android:layout_height="100dp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:text="" />
-
-            <Button
-                android:id="@+id/r2b3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/r3b1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="" />
-
-            <Button
-                android:id="@+id/r3b2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="" />
-
-            <Button
-                android:id="@+id/r3b3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="60sp"
                 android:text="" />
 
         </LinearLayout>

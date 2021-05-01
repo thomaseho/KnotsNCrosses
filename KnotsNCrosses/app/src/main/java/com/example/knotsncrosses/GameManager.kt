@@ -14,6 +14,7 @@ object GameManager {
     var state:GameState? = null
     val StartingGameState = listOf(listOf(0,0,0), listOf(0,0,0), listOf(0,0,0))
 
+    var onState:((GameState) -> Unit)? = null
     var onRecentGame:((Game) -> Unit)? = null
     var onCurrentGames:((List<Game>) -> Unit)? = null
     var onChanges:((List<Game>) -> Unit)? = null
@@ -23,15 +24,21 @@ object GameManager {
         GameService.createGame(player, StartingGameState) { game: Game?, err: Int? ->
             if (err != null){
                 if (err == 406){
+
                     println("You dun goofed the header m8")
+
                 }
                 else {
+
                     println("Something dun goofed $err")
+
                 }
             }
             else {
                 if (game != null) {
+
                     println("You created a game with id ${game.gameId}")
+
                     currentGames.add(game)
                     recentGame = game
                     onCurrentGames?.invoke(currentGames)
@@ -47,15 +54,21 @@ object GameManager {
 
             if(err != null){
                 if (err == 406){
+
                     println("You dun goofed the header m8")
+
                 }
                 else {
+
                     println("Something dun goofed $err")
+
                 }
             }
             else {
                 if (game != null){
+
                     println("You joined a game with id ${game.gameId}")
+
                 }
             }
         }
@@ -67,13 +80,19 @@ object GameManager {
 
             if (err != null) {
                 if (err == 406) {
+
                     println("You dun goofed the header m8")
+
                 } else {
+
                     println("Something dun goofed $err")
+
                 }
             } else {
                 if (game != null) {
+
                     println("You updated a game with id ${game.gameId}")
+
                 }
             }
         }
@@ -85,12 +104,17 @@ object GameManager {
 
             if (err != null) {
                 if (err == 406) {
+
                     println("You dun goofed the header m8")
+
                 } else {
+
                     println("Something dun goofed $err")
+
                 }
             } else {
                 if (game != null) {
+
                     println("You polled a game with id ${game.gameId}")
                     currentGames.forEach{
 
@@ -136,6 +160,12 @@ object GameManager {
     fun loadGames(){
 
         currentGames = mutableListOf()
+
+    }
+
+    fun updateState(state: GameState){
+
+
 
     }
 
