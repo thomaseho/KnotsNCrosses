@@ -19,6 +19,7 @@ object GameManager {
     var onCurrentGames:((List<Game>) -> Unit)? = null
     var onChanges:((List<Game>) -> Unit)? = null
 
+
     fun createGame(player:String){
 
         GameService.createGame(player, StartingGameState) { game: Game?, err: Int? ->
@@ -141,6 +142,100 @@ object GameManager {
             }
         }
 
+    }
+
+    fun checkForWin(gameState: GameState): Int{
+
+
+        if (gameState[0][0] == gameState[0][1] && gameState[0][0] == gameState[0][2] && gameState[0][0] != 0){
+            if (gameState[0][0] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        if (gameState[1][0] == gameState[1][1] && gameState[1][0] == gameState[1][2] && gameState[1][0] != 0){
+            if (gameState[1][0] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        if (gameState[2][0] == gameState[2][1] && gameState[2][0] == gameState[2][2] && gameState[2][0] != 0){
+            if (gameState[2][0] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        if (gameState[0][0] == gameState[1][0] && gameState[0][0] == gameState[2][0] && gameState[0][0] != 0){
+            if (gameState[0][0] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        if (gameState[0][1] == gameState[1][1] && gameState[0][1] == gameState[2][1] && gameState[0][1] != 0){
+            if (gameState[0][1] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        if (gameState[0][2] == gameState[1][2] && gameState[0][2] == gameState[2][2] && gameState[0][2] != 0){
+            if (gameState[0][2] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        if (gameState[0][0] == gameState[1][1] && gameState[0][0] == gameState[2][2] && gameState[0][0] != 0){
+            if (gameState[0][0] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        if (gameState[0][2] == gameState[1][1] && gameState[0][2] == gameState[2][0] && gameState[0][2] != 0){
+            if (gameState[0][2] == 1){
+
+                return 1
+
+            } else {
+
+                return 2
+            }
+        }
+
+        return 0
     }
 
     fun putMove(token: Int, row: Int, spot: Int){

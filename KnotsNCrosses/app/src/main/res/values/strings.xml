@@ -19,4 +19,5 @@
     <string name="save_game">Save Games</string>
     <string name="playertwo">PlayerTwo</string>
     <string name="playerone">PlayerOne</string>
+    <string name="winner">Winner</string>
 </resources>

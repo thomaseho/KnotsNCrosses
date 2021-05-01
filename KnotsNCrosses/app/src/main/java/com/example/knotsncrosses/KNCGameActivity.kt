@@ -1,6 +1,7 @@
 package com.example.knotsncrosses
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -39,6 +40,11 @@ class KNCGameActivity : AppCompatActivity() {
             GameManager.onGameActivty = {
 
                 setupGrid()
+                val winner = GameManager.checkForWin(it.state)
+
+                if (winner != 0){
+                    displayWinner(winner)
+                }
 
                 if (it.players.size > 1) {
 
@@ -275,5 +281,13 @@ class KNCGameActivity : AppCompatActivity() {
         GameManager.putMove(playerToken, row, spot)
 
         return playerToken
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun displayWinner(player: Int){
+
+        binding.winnerText.text = "${GameHolder.PickedGame!!.players[player - 1]} Wins!"
+        binding.winnerText.setTextColor(Color.parseColor("#0aad3f"))
+
     }
 }
