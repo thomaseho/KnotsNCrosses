@@ -42,6 +42,8 @@ class JoinGame : AppCompatActivity() {
 
         }
 
+        finish()
+
     }
 
 }

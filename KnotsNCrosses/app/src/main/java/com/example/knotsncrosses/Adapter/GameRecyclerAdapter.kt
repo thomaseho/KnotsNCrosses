@@ -55,5 +55,4 @@ class GameRecyclerAdapter(private var games:List<Game>, private val onGameClicke
         notifyDataSetChanged()
 
     }
-
 }

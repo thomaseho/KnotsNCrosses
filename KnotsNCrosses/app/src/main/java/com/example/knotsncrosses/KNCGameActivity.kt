@@ -289,5 +289,15 @@ class KNCGameActivity : AppCompatActivity() {
         binding.winnerText.text = "${GameHolder.PickedGame!!.players[player - 1]} Wins!"
         binding.winnerText.setTextColor(Color.parseColor("#0aad3f"))
 
+        binding.r0b0.isClickable = false
+        binding.r0b1.isClickable = false
+        binding.r0b2.isClickable = false
+        binding.r1b0.isClickable = false
+        binding.r1b1.isClickable = false
+        binding.r1b2.isClickable = false
+        binding.r2b0.isClickable = false
+        binding.r2b1.isClickable = false
+        binding.r2b2.isClickable = false
+
     }
 }

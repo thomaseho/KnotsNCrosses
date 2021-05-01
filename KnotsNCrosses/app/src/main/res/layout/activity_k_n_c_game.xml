@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KNCGameActivity">
+    tools:context=".KNCGameActivity"
+    android:background="@color/cardview_dark_background">
 
 
     <FrameLayout
@@ -15,14 +16,28 @@
         app:layout_constraintBottom_toTopOf="@+id/gameGrid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/cardview_dark_background">
 
+        <TextView
+            android:id="@+id/playerOneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="serif"
+            android:text="@string/player_1"
+            android:textColor="@color/userNameColor"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/playerOneName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/userNameColor"
+            android:fontFamily="serif"
+            android:textSize="20sp"
             android:text="@string/playerone" />
     </FrameLayout>
 
@@ -34,13 +49,29 @@
         app:layout_constraintBottom_toTopOf="@+id/gameGrid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/cardview_dark_background">
+
+        <TextView
+            android:id="@+id/playerTwoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="35dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/userNameColor"
+            android:fontFamily="serif"
+            android:textSize="20sp"
+            android:text="Player 2" />
 
         <TextView
             android:id="@+id/playerTwoName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/userNameColor"
+            android:fontFamily="serif"
+            android:textSize="20sp"
             android:text="@string/playertwo" />
     </FrameLayout>
 
@@ -192,6 +223,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameGrid"
-        android:textColor="@color/white"/>
+        android:textColor="@color/cardview_dark_background"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

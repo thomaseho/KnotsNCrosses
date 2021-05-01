@@ -44,6 +44,7 @@ object GameManager {
                     recentGame = game
                     onCurrentGames?.invoke(currentGames)
                     updateRecentGame()
+                    
                 }
             }
         }
@@ -69,6 +70,10 @@ object GameManager {
                 if (game != null){
 
                     println("You joined a game with id ${game.gameId}")
+
+                    currentGames.add(game)
+                    recentGame = game
+                    onCurrentGames?.invoke(currentGames)
 
                 }
             }
