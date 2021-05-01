@@ -8,13 +8,13 @@ object GameManager {
 
     lateinit var currentGames: MutableList<Game>
 
-    var recentGame: Game = Game(mutableListOf(), "", listOf())
+    var recentGame: Game = Game(mutableListOf(), "", mutableListOf())
 
     var player:String? = null
     var state:GameState? = null
-    val StartingGameState = listOf(listOf(0,0,0), listOf(0,0,0), listOf(0,0,0))
+    val StartingGameState = mutableListOf(listOf(0,0,0), listOf(0,0,0), listOf(0,0,0))
 
-    var onState:((GameState) -> Unit)? = null
+    var onGameActivty:((Game) -> Unit)? = null
     var onRecentGame:((Game) -> Unit)? = null
     var onCurrentGames:((List<Game>) -> Unit)? = null
     var onChanges:((List<Game>) -> Unit)? = null
@@ -129,6 +129,11 @@ object GameManager {
                                 it.players = game.players
 
                             }
+                        }
+
+                        if (game == GameHolder.PickedGame) {
+
+                            updatePickedGame()
 
                         }
                     }
@@ -151,21 +156,21 @@ object GameManager {
 
     }
 
+    fun updatePickedGame(){
+
+        onGameActivty?.invoke(GameHolder.PickedGame!!)
+
+    }
+
     fun updateChanges(){
 
         onChanges?.invoke(currentGames)
 
     }
 
-    fun loadGames(){
+    fun loadGames() {
 
         currentGames = mutableListOf()
-
-    }
-
-    fun updateState(state: GameState){
-
-
 
     }
 

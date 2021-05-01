@@ -1,12 +1,9 @@
 package com.example.knotsncrosses
 
 import android.annotation.SuppressLint
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
-import androidx.core.view.forEach
 import com.example.knotsncrosses.databinding.ActivityKNCGameBinding
 import kotlinx.android.synthetic.main.activity_k_n_c_game.*
 
@@ -36,6 +33,22 @@ class KNCGameActivity : AppCompatActivity() {
             }
 
             setupGrid()
+
+            GameManager.onGameActivty = {
+
+                setupGrid()
+
+                if (it.players.size > 1) {
+
+                    binding.playerTwoName.text = GameHolder.PickedGame!!.players[1]
+
+                }
+
+            }
+
+            r0b0.setOnClickListener {
+                setToken(0, 0)
+            }
 
         }
     }
@@ -82,5 +95,22 @@ class KNCGameActivity : AppCompatActivity() {
             updateGridButton(states[i], grid[i])
 
         }
+
+    }
+
+    fun setToken(row: Int, spot: Int){
+
+        val playerToken: Int
+
+        if (GameHolder.PickedGame!!.players[0] == GameManager.player){
+
+            playerToken = 1
+
+        } else {
+
+            playerToken = 2
+
+        }
+
     }
 }
