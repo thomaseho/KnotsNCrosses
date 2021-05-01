@@ -12,7 +12,7 @@ object GameManager {
 
     var player:String? = null
     var state:GameState? = null
-    val StartingGameState = mutableListOf(listOf(0,0,0), listOf(0,0,0), listOf(0,0,0))
+    val StartingGameState = mutableListOf(mutableListOf(0,0,0), mutableListOf(0,0,0), mutableListOf(0,0,0))
 
     var onGameActivty:((Game) -> Unit)? = null
     var onRecentGame:((Game) -> Unit)? = null
@@ -140,6 +140,14 @@ object GameManager {
                 }
             }
         }
+
+    }
+
+    fun putMove(token: Int, row: Int, spot: Int){
+
+        GameHolder.PickedGame!!.state[row].set(spot, token)
+
+        updateGame(GameHolder.PickedGame!!.gameId, GameHolder.PickedGame!!.state)
 
     }
 

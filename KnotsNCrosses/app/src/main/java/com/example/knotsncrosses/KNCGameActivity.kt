@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
+import com.example.knotsncrosses.api.data.GameState
 import com.example.knotsncrosses.databinding.ActivityKNCGameBinding
 import kotlinx.android.synthetic.main.activity_k_n_c_game.*
 
@@ -47,9 +49,167 @@ class KNCGameActivity : AppCompatActivity() {
             }
 
             r0b0.setOnClickListener {
-                setToken(0, 0)
+
+                if (binding.r0b0.text == "") {
+
+                    val token = setToken(0, 0)
+
+                    if (token == 1){
+                        binding.r0b0.text = "X"
+                    } else {
+                        binding.r0b0.text = "O"
+                    }
+
+                }
+                 else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
             }
 
+            r0b1.setOnClickListener {
+
+                if (binding.r0b1.text == "") {
+
+                    val token = setToken(0, 1)
+
+                    if (token == 1){
+                        binding.r0b1.text = "X"
+                    } else {
+                        binding.r0b1.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            r0b2.setOnClickListener {
+
+                if (binding.r0b2.text == "") {
+
+                    val token = setToken(0, 2)
+
+                    if (token == 1){
+                        binding.r0b2.text = "X"
+                    } else {
+                        binding.r0b2.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            r1b0.setOnClickListener {
+
+                if (binding.r1b0.text == "") {
+
+                    val token = setToken(1, 0)
+
+                    if (token == 1){
+                        binding.r1b0.text = "X"
+                    } else {
+                        binding.r1b0.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            r1b1.setOnClickListener {
+
+                if (binding.r1b1.text == "") {
+
+                    val token = setToken(1, 1)
+
+                    if (token == 1){
+                        binding.r1b1.text = "X"
+                    } else {
+                        binding.r1b1.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            r1b2.setOnClickListener {
+
+                if (binding.r1b2.text == "") {
+
+                    val token = setToken(1, 2)
+
+                    if (token == 1){
+                        binding.r1b2.text = "X"
+                    } else {
+                        binding.r1b2.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            r2b0.setOnClickListener {
+
+                if (binding.r2b0.text == "") {
+
+                    val token = setToken(2, 0)
+
+                    if (token == 1){
+                        binding.r2b0.text = "X"
+                    } else {
+                        binding.r2b0.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            r2b1.setOnClickListener {
+
+                if (binding.r2b1.text == "") {
+
+                    val token = setToken(2, 1)
+
+                    if (token == 1){
+                        binding.r2b1.text = "X"
+                    } else {
+                        binding.r2b1.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            r2b2.setOnClickListener {
+
+                if (binding.r2b2.text == "") {
+
+                    val token = setToken(2, 2)
+
+                    if (token == 1){
+                        binding.r2b2.text = "X"
+                    } else {
+                        binding.r2b2.text = "O"
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "That spot is taken kid", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -98,7 +258,7 @@ class KNCGameActivity : AppCompatActivity() {
 
     }
 
-    fun setToken(row: Int, spot: Int){
+    fun setToken(row: Int, spot: Int): Int{
 
         val playerToken: Int
 
@@ -112,5 +272,8 @@ class KNCGameActivity : AppCompatActivity() {
 
         }
 
+        GameManager.putMove(playerToken, row, spot)
+
+        return playerToken
     }
 }
