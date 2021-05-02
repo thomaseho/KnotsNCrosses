@@ -1,5 +1,7 @@
 package com.example.knotsncrosses
 
+import android.util.Log
+import android.widget.Toast
 import com.example.knotsncrosses.api.GameService
 import com.example.knotsncrosses.api.data.Game
 import com.example.knotsncrosses.api.data.GameState
@@ -19,6 +21,8 @@ object GameManager {
     var onCurrentGames:((List<Game>) -> Unit)? = null
     var onChanges:((List<Game>) -> Unit)? = null
 
+    val TAG:String = "GameManager"
+
 
     fun createGame(player:String){
 
@@ -26,23 +30,23 @@ object GameManager {
             if (err != null){
                 if (err == 406){
 
-                    println("You dun goofed the header m8")
+                    Log.d(TAG, "Something is wrong with the header for the request")
 
                 }
                 else {
 
-                    println("Something dun goofed $err")
+                    Log.d(TAG, "Something is wrong the request. Error code: ${err}")
 
                 }
             }
             else {
                 if (game != null) {
 
-                    println("You created a game with id ${game.gameId}")
+                    Log.d(TAG, "You created a game with id ${game.gameId}")
 
                     currentGames.add(game)
                     recentGame = game
-                    onCurrentGames?.invoke(currentGames)
+                    updateCurrentGames()
                     updateRecentGame()
                     
                 }
@@ -57,23 +61,23 @@ object GameManager {
             if(err != null){
                 if (err == 406){
 
-                    println("You dun goofed the header m8")
+                    Log.d(TAG, "Something is wrong with the header for the request")
 
                 }
                 else {
 
-                    println("Something dun goofed $err")
+                    Log.d(TAG, "Something is wrong the request. Error code: ${err}")
 
                 }
             }
             else {
                 if (game != null){
 
-                    println("You joined a game with id ${game.gameId}")
+                    Log.d(TAG, "You joined the game with id ${game.gameId}")
 
                     currentGames.add(game)
                     recentGame = game
-                    onCurrentGames?.invoke(currentGames)
+                    updateCurrentGames()
 
                 }
             }
@@ -87,17 +91,17 @@ object GameManager {
             if (err != null) {
                 if (err == 406) {
 
-                    println("You dun goofed the header m8")
+                    Log.d(TAG, "Something is wrong with the header for the request")
 
                 } else {
 
-                    println("Something dun goofed $err")
+                    Log.d(TAG, "Something is wrong the request. Error code: ${err}")
 
                 }
             } else {
                 if (game != null) {
 
-                    println("You updated a game with id ${game.gameId}")
+                    Log.d(TAG, "You updated the game with id ${game.gameId}")
 
                 }
             }
@@ -111,17 +115,18 @@ object GameManager {
             if (err != null) {
                 if (err == 406) {
 
-                    println("You dun goofed the header m8")
+                    Log.d(TAG, "Something is wrong with the header for the request")
 
                 } else {
 
-                    println("Something dun goofed $err")
+                    Log.d(TAG, "Something is wrong the request. Error code: ${err}")
 
                 }
             } else {
                 if (game != null) {
 
-                    println("You polled a game with id ${game.gameId}")
+                    Log.d(TAG, "You polled a game with id ${game.gameId}")
+
                     currentGames.forEach{
 
                         if (it.gameId == game.gameId){
