@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.knotsncrosses.Firebase.FirebaseManager
 import com.example.knotsncrosses.api.data.Game
@@ -74,7 +73,7 @@ class MenuScreen: AppCompatActivity() {
 
         GameManager.onChanges = {
 
-            // Future savepoint for Firebase
+            saveUserName()
 
         }
 
@@ -108,7 +107,7 @@ class MenuScreen: AppCompatActivity() {
 
     }
 
-    private fun saveGames(){
+    private fun saveUserName(){
 
         FirebaseManager.instance.saveUserData()
 

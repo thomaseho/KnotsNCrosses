@@ -35,9 +35,8 @@ class MainActivity : AppCompatActivity(){
 
         auth = Firebase.auth
         signInAnonymously()
-        //FirebaseManager.instance.loadFirebase()
-        GameManager.loadGames()
 
+        FirebaseManager.instance.loadFirebase()
 
         binding.startButton.setOnClickListener {
 
