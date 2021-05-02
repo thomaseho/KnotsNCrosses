@@ -1,2 +1,2 @@
 # KnotsNCrosses
-Cutting edge knots and crosses game :)
+![alt text](https://github.com/[thomaseho]/[KnotsNCrosses]/blob/[main]/images/GameScreen.png?raw=true)
