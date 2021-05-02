@@ -25,40 +25,39 @@ class FirebaseManager {
 
     fun loadFirebase() {
 
-        val file = File(filePath, uniqueId.plus("-Games.json")).toUri()
+        val userRef = Firebase.storage.reference.child("users/${uniqueId}.json")
+        val ONE_MEGABYTE: Long = 1024 * 1024
 
-        val ref = FirebaseStorage.getInstance().reference.child("users/${file.lastPathSegment}")
-        val downloadUserGames = ref.getFile(file)
+        userRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
 
-        downloadUserGames.addOnSuccessListener {
+            val user = String(it)
 
-            if(it != null){
+            val result = Klaxon().parse<KNCUser>(user)
 
-                val jsonData = Gson().fromJson(it.toString(), KNCUser::class.java)
+            if (result != null){
 
-                if (jsonData != null){
+                GameManager.currentGames = mutableListOf()
+                GameManager.player = result.userName
 
-                    GameManager.currentGames = jsonData.currentGames
-                    GameManager.player = jsonData.userName
+            } else {
 
-                } else {
-
-                    GameManager.loadGames()
-
-                }
-
-                GameManager.updateCurrentGames()
+                GameManager.loadGames()
 
             }
+
+        }.addOnFailureListener{
+
+            GameManager.loadGames()
 
         }
 
     }
 
+
     fun saveUserData() {
 
         val path  = filePath
-        val fileName = "${uniqueId}-Games.json"
+        val fileName = "${uniqueId}.json"
         val file = File(path, fileName)
 
         if (file.exists() && file.isFile){
@@ -69,50 +68,18 @@ class FirebaseManager {
 
         file.createNewFile()
 
-
-            GameManager.player = GameManager.currentGames[0].players[0]
-
-            var content: String = "{\n"
-
-            GameManager.currentGames.forEach { Game ->
-                content += "{"
-                content += "\"players\": [ \n"
-
-                Game.players.forEach {
-
-                   content += "\"${it}\", \n"
-
-                }
-
-                content += "], \n\"gameId\": \"${Game.gameId}\", \n" +
-                        "\"state\": [\n"
-
-                Game.state.forEach{
-
-                    content += "[ \n"
-
-                    it.forEach {
-                        content += "${it}, \n"
-                    }
-
-                    content += "], \n"
-
-                    }
-                content +=  " ], \n }, \n"
+        val content: String = "{\n" +
+                "\"userName\": \"${GameManager.player}\"\n" +
+                "}"
 
 
-            }
-            content += "}\n"
+        FileOutputStream(file, true).bufferedWriter().use { writer ->
 
-            val jsonContent = Gson().toJson(content)
+            writer.write(content)
 
-            FileOutputStream(file, true).bufferedWriter().use { writer ->
+        }
 
-                writer.write(jsonContent)
-
-            }
-
-            upload(file.toUri())
+        upload(file.toUri())
 
 
     }
