@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import com.example.knotsncrosses.api.data.Game
 import com.example.knotsncrosses.api.data.GameState
 import com.example.knotsncrosses.databinding.ActivityKNCGameBinding
 import kotlinx.android.synthetic.main.activity_k_n_c_game.*
@@ -40,17 +41,8 @@ class KNCGameActivity : AppCompatActivity() {
             GameManager.onGameActivty = {
 
                 setupGrid()
-                val winner = GameManager.checkForWin(it.state)
-
-                if (winner != 0){
-                    displayWinner(winner)
-                }
-
-                if (it.players.size > 1) {
-
-                    binding.playerTwoName.text = GameHolder.PickedGame!!.players[1]
-
-                }
+                whoIsUp(it)
+                checkForWinner(it)
 
             }
 
@@ -245,11 +237,83 @@ class KNCGameActivity : AppCompatActivity() {
 
     }
 
+    private fun checkForWinner(game: Game) {
+
+        val winner = GameManager.checkForWin(game.state)
+
+        if (winner != 0){
+            displayWinner(winner)
+        }
+
+    }
+
     @SuppressLint("SetTextI18n")
     private fun displayWinner(player: Int){
 
         binding.winnerText.text = "${GameHolder.PickedGame!!.players[player - 1]} Wins!"
         binding.winnerText.setTextColor(Color.parseColor("#0aad3f"))
+
+        freezeGrid()
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun whoIsUp(game: Game){
+
+        val whoseTurn = GameManager.whoseTurn()
+
+        if (whoseTurn == game.players[0]) {
+
+            if (game.players.size > 1) {
+
+                binding.playerTwoName.text = GameHolder.PickedGame!!.players[1]
+                binding.cheaterText.text = "${GameHolder.PickedGame!!.players[0]} is up"
+
+            }
+
+            if (whoseTurn == GameManager.cheater){
+
+                binding.cheaterText.text = GameManager.cheater
+
+            }
+
+        } else {
+
+            if (game.players.size > 1) {
+
+                binding.cheaterText.text = "${GameHolder.PickedGame!!.players[1]} is up"
+
+            }
+
+        }
+
+        if (whoseTurn == GameManager.player) {
+
+            unFreezeGrid()
+
+        } else {
+
+            freezeGrid()
+
+        }
+
+    }
+
+    private fun unFreezeGrid() {
+
+        binding.r0b0.isClickable = true
+        binding.r0b1.isClickable = true
+        binding.r0b2.isClickable = true
+        binding.r1b0.isClickable = true
+        binding.r1b1.isClickable = true
+        binding.r1b2.isClickable = true
+        binding.r2b0.isClickable = true
+        binding.r2b1.isClickable = true
+        binding.r2b2.isClickable = true
+
+    }
+
+    private fun freezeGrid(){
 
         binding.r0b0.isClickable = false
         binding.r0b1.isClickable = false

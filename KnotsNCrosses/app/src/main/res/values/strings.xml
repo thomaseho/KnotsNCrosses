@@ -23,4 +23,5 @@
     <string name="player_1">Player 1</string>
     <string name="JoinOtherPeoplesGames">Join another players game</string>
     <string name="CreateUserName">Create a username</string>
+    <string name="cheater">Wait for people to join... Cheater</string>
 </resources>
