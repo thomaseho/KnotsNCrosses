@@ -18,6 +18,7 @@ Hoveddelen av skjermen viser et ScrollView med alle spillene du er en del av, Sp
 
 Aktive spill blir ikke lagret på Firebase, men er noe jeg ville gjort ved fremtidig utvikling av appen. Jeg ville også lagt inn muligheten til å fjerne spill, eller starte et nytt et hvis spillet er over. Slik som det er nå må man lage nye spill når man åpner appen, men så er det tre på rad, og spillet varer ikke veldig lenge.(Kanskje det er for alles beste at det ikke blir lagret?)
 
-Til sist et bilde av hvordan selve spillskjermen ser ut, øverst til venstre vises spiller 1, øverst til høyre spiller 2. Selve griden viser X og O for respektivt for spiller 1 og 2. Om man eventuelt skulle vinne vil det også vises en vinnertekst men hvilken spiller som vant i bunnen av skjermen.
+Til sist et bilde av hvordan selve spillskjermen ser ut, øverst til venstre vises spiller 1, øverst til høyre spiller 2. Selve griden viser X og O for respektivt for spiller 1 og 2. Spillet er turbasert, og vil til enhver tid vise i bunnen av skjermen hvem sin tur det er, hvis det ikke er din tur får du heller ikke gjøre et trekk. 
+Om man eventuelt skulle vinne vil det også vises en vinnertekst men hvilken spiller som vant i bunnen av skjermen.
 
 ![Game Screen image :)](https://github.com/thomaseho/KnotsNCrosses/blob/main/images/GameScreen.png)
