@@ -121,7 +121,7 @@ class MenuScreen: AppCompatActivity() {
             }
 
             override fun onFinish() {
-                
+
                 GameManager.currentGames.forEach {
 
                     GameManager.pollGame(it.gameId)
