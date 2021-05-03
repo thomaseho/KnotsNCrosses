@@ -15,6 +15,7 @@ object GameManager {
     var player:String? = null
     var state:GameState? = null
     val StartingGameState = mutableListOf(mutableListOf(0,0,0), mutableListOf(0,0,0), mutableListOf(0,0,0))
+    val cheater: String = "Wait for another player..."
 
     var onGameActivty:((Game) -> Unit)? = null
     var onRecentGame:((Game) -> Unit)? = null
@@ -284,6 +285,45 @@ object GameManager {
     fun loadGames() {
 
         currentGames = mutableListOf()
+
+    }
+
+    fun whoseTurn(): String {
+
+        val game = GameHolder.PickedGame!!
+        var xCount: Int = 0
+        var oCount: Int = 0
+
+        game.state.forEach {
+            it.forEach {
+
+                when(it) {
+
+                    1 -> xCount += 1
+                    2 -> oCount += 1
+
+                }
+
+            }
+        }
+
+        if (xCount <= oCount) {
+
+            return game.players[0]
+
+        } else {
+
+            if (game.players.size > 1) {
+
+                return game.players[1]
+
+            } else {
+
+                return cheater
+
+            }
+
+        }
 
     }
 

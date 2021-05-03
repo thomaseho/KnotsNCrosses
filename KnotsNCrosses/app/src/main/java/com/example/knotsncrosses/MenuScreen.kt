@@ -121,8 +121,7 @@ class MenuScreen: AppCompatActivity() {
             }
 
             override fun onFinish() {
-
-                println("Det pollineres :)")
+                
                 GameManager.currentGames.forEach {
 
                     GameManager.pollGame(it.gameId)

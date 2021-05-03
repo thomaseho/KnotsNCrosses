@@ -225,4 +225,20 @@
         app:layout_constraintTop_toBottomOf="@+id/gameGrid"
         android:textColor="@color/cardview_dark_background"/>
 
+    <TextView
+        android:id="@+id/cheaterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="88dp"
+        android:text=""
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameGrid"
+        android:textColor="@color/userNameColor"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
