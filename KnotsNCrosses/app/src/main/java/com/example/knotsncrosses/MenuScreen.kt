@@ -29,8 +29,6 @@ class MenuScreen: AppCompatActivity() {
 
     var pollTimeInMs = 5000L
     val timeTicks = 1000L
-    var repetitions: Int = 0
-
 
     val TAG:String = "MenuScreen"
 

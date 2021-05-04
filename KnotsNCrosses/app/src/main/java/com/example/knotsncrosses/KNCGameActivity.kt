@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.example.knotsncrosses.api.data.Game
@@ -14,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_k_n_c_game.*
 class KNCGameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityKNCGameBinding
+
+    val TAG: String = "GameActivity"
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -201,7 +204,7 @@ class KNCGameActivity : AppCompatActivity() {
             2 -> gridbutton.text = "O"
 
             else -> {
-                println("SOMETHING IS NOT QUITE RIGHT FAM")
+                Log.d(TAG,"Something is not quite right")
             }
         }
     }
