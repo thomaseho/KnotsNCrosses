@@ -27,6 +27,12 @@ class KNCGameActivity : AppCompatActivity() {
             binding = ActivityKNCGameBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
+            val grid = listOf(
+                    r0b0, r0b1, r0b2,
+                    r1b0, r1b1, r1b2,
+                    r2b0, r2b1, r2b2
+            )
+
             binding.playerOneName.text = GameHolder.PickedGame!!.players[0]
 
             if (GameHolder.PickedGame!!.players.size > 1){
@@ -39,11 +45,11 @@ class KNCGameActivity : AppCompatActivity() {
 
             }
 
-            setupGrid()
+            setupGrid(grid)
 
             GameManager.onGameActivty = {
 
-                setupGrid()
+                setupGrid(grid)
                 whoIsUp(it)
                 checkForWinner(it)
 
@@ -209,13 +215,7 @@ class KNCGameActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupGrid(){
-
-        val grid: MutableList<Button> = mutableListOf(
-                r0b0, r0b1, r0b2,
-                r1b0, r1b1, r1b2,
-                r2b0, r2b1, r2b2
-        )
+    private fun setupGrid(grid: List<Button>){
 
         val ints = listOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
 
