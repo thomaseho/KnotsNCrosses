@@ -246,6 +246,7 @@ class KNCGameActivity : AppCompatActivity() {
 
         if (winner != 0){
             displayWinner(winner)
+            binding.cheaterText.text = ""
         }
 
     }
