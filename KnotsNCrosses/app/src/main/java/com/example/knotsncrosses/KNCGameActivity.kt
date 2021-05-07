@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.example.knotsncrosses.api.data.Game
@@ -15,6 +16,8 @@ class KNCGameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityKNCGameBinding
 
+    val TAG: String = "GameActivity"
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,12 @@ class KNCGameActivity : AppCompatActivity() {
 
             binding = ActivityKNCGameBinding.inflate(layoutInflater)
             setContentView(binding.root)
+
+            val grid = listOf(
+                    r0b0, r0b1, r0b2,
+                    r1b0, r1b1, r1b2,
+                    r2b0, r2b1, r2b2
+            )
 
             binding.playerOneName.text = GameHolder.PickedGame!!.players[0]
 
@@ -36,11 +45,11 @@ class KNCGameActivity : AppCompatActivity() {
 
             }
 
-            setupGrid()
+            setupGrid(grid)
 
             GameManager.onGameActivty = {
 
-                setupGrid()
+                setupGrid(grid)
                 whoIsUp(it)
                 checkForWinner(it)
 
@@ -201,18 +210,12 @@ class KNCGameActivity : AppCompatActivity() {
             2 -> gridbutton.text = "O"
 
             else -> {
-                println("SOMETHING IS NOT QUITE RIGHT FAM")
+                Log.d(TAG,"Something is not quite right")
             }
         }
     }
 
-    private fun setupGrid(){
-
-        val grid: MutableList<Button> = mutableListOf(
-                r0b0, r0b1, r0b2,
-                r1b0, r1b1, r1b2,
-                r2b0, r2b1, r2b2
-        )
+    private fun setupGrid(grid: List<Button>){
 
         val ints = listOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
 
@@ -243,6 +246,7 @@ class KNCGameActivity : AppCompatActivity() {
 
         if (winner != 0){
             displayWinner(winner)
+            binding.cheaterText.text = ""
         }
 
     }

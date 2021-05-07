@@ -13,7 +13,6 @@ object GameManager {
     var recentGame: Game = Game(mutableListOf(), "", mutableListOf())
 
     var player:String? = null
-    var state:GameState? = null
     val StartingGameState = mutableListOf(mutableListOf(0,0,0), mutableListOf(0,0,0), mutableListOf(0,0,0))
     val cheater: String = "Wait for another player..."
 
