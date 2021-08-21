@@ -1,6 +1,6 @@
 # KnotsNCrosses
 
-KnotsNCrosses er en app som lar deg spille tre på rad over internett. Appen bruker et sett med API'er tildelt av foreleser. API'et gir deg muligheten til å spille mot alle andre som bruker samme API, samme app er ikke nødvendig. Appen jeg har laget har muligheten til å spille så mange spill du vil samtidig, du kan lage dine egne spill eller bli med i andres spill gitt at du får gameId'en deres.
+KnotsNCrossesXD er en app som lar deg spille tre på rad over internett. Appen bruker et sett med API'er tildelt av foreleser. API'et gir deg muligheten til å spille mot alle andre som bruker samme API, samme app er ikke nødvendig. Appen jeg har laget har muligheten til å spille så mange spill du vil samtidig, du kan lage dine egne spill eller bli med i andres spill gitt at du får gameId'en deres.
 
 Første gang man starter appen vil man få opp en skjerm for å lage et brukernavn. Navnet blir lagret på Firebase slik at man ikke trenger å lage et nytt navn hver gang man vil spille.
 
